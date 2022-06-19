@@ -1,12 +1,13 @@
 const Joi = require('joi')
 
-const userValidationSchema = (fields)=>{
-    const validationSchema = Joi.object({
-        email:Joi.string().min(8).max(32).required(),
-        Password:Joi.string().min(6).max(24).required()
+const validationSchema = (fields)=>{
+    const validationUser = Joi.object({
+        email:Joi.string().min(8).max(24).required(),
+        password:Joi.string().min(6).max(24).required()
     })
-    const {error,value} = validationSchema.validate(fields)
+    const {error,value} = validationUser.validate(fields)
     return {error,value}
 }
 
-module.exports = {userValidationSchema}
+
+module.exports = {validationSchema}
